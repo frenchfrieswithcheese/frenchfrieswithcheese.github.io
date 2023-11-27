@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.orange-pink.min.css"> <!-- Cambiado a naranja -->
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <style>
+        /* Agregar estilos personalizados aquí */
+        body {
+            font-size: 17px; /* Cambiado el tamaño de la fuente general */
+            margin: 0; /* Eliminado el margen predeterminado del body */
+            padding: 0;
+            height: 100vh; /* Establecer la altura del body al 100% de la ventana */
+            display: flex;
+            flex-direction: column;
+            background-color: #333; /* Cambiado a gris oscuro */
+            color: #fff; /* Cambiado a color de texto blanco */
+        }
+
+        .mdl-layout {
+            flex: 1; /* Asegurar que la layout ocupe el espacio disponible */
+            display: flex;
+            flex-direction: column;
+        }
+
+        #leaderboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 25px; /* Espaciado superior */
+        }
+
+        .entry {
+            margin: 10px;
+            padding: 20px; /* Aumentado el padding */
+            border: 1px solid #ddd;
+            border-radius: 15px; /* Aumentado el radio de la esquina */
+            width: 300px; /* Aumentado el ancho de la caja */
+            text-align: center;
+            background-color: #555; /* Cambiado a gris más claro */
+            position: relative; /* Añadido posición relativa para elementos secundarios absolutos */
+        }
+
+        .place {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 25px; /* Aumentado el tamaño de la fuente para los números de posición */
+            color: #fff;
+        }
+
+        .user-name {
+            font-size: 22px; /* Aumentado el tamaño de la fuente para el nombre del usuario */
+            margin-bottom: 15px; /* Añadido margen inferior */
+        }
+
+        .user-score {
+            font-size: 17px; /* Aumentado el tamaño de la fuente para la puntuación del usuario */
+        }
+
+        .first-place {
+            color: #FFD700; /* Color dorado para el primer lugar */
+        }
+
+        .second-place {
+            color: #C0C0C0; /* Color plateado para el segundo lugar */
+        }
+
+        .third-place {
+            color: #CD7F32; /* Color bronce para el tercer lugar */
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centrar horizontalmente los botones radiales */
+            margin: 10px 0; /* Añadido espacio alrededor de los radio buttons */
+        }
+
+        .checkbox-label {
+            margin-right: 10px;
+        }
+
+        /* Estilos para el ícono del podio */
+        .podium-icon {
+            margin-right: 8px;
+			margin-left: -50px;
+            font-size: 24px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: auto; /* Alinear al final del contenedor principal (abajo) */
+            padding: 10px;
+            background-color: #555; /* Cambiado a gris más claro */
+        }
+    </style>
+    <title>Endless Challenge SMM:WE Leaderboard</title> <!-- Cambiado el nombre de la web -->
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--orange"> <!-- Cambiado a naranja -->
+            <div class="mdl-layout__header-row">
+                <span class="podium-icon material-icons">emoji_events</span> <!-- Añadido el ícono del podio -->
+                <span class="mdl-layout-title">SMM:WE Endless Challenge</span> <!-- Cambiado el nombre de la web -->
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="checkbox-container">
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect checkbox-label" for="easy">
+                        <input type="radio" id="easy" class="mdl-radio__button" name="difficulty" value="easy" checked onchange="loadLeaderboard()">
+                        <span class="mdl-radio__label">Easy</span>
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect checkbox-label" for="normal">
+                        <input type="radio" id="normal" class="mdl-radio__button" name="difficulty" value="normal" onchange="loadLeaderboard()">
+                        <span class="mdl-radio__label">Normal</span>
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect checkbox-label" for="hard">
+                        <input type="radio" id="hard" class="mdl-radio__button" name="difficulty" value="hard" onchange="loadLeaderboard()">
+                        <span class="mdl-radio__label">Hard</span>
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect checkbox-label" for="expert">
+                        <input type="radio" id="expert" class="mdl-radio__button" name="difficulty" value="expert" onchange="loadLeaderboard()">
+                        <span class="mdl-radio__label">Expert</span>
+                    </label>
+                </div>
+                <div id="leaderboard" class="mdl-typography--text-left"></div>
+            </div>
+        </main>
+        <div class="footer">
+            De parte de HeXp y Sicraft con ❤. Engine Kingdom 2024.
+        </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
